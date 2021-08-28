@@ -73,15 +73,18 @@ namespace ExamenGestionProduit.Controllers
             return new JsonResult("produit supprimé");
         }
         // POST api/<ProduitsController>recherche
-        [HttpPost("recherche", Name = "recherche")]
-        public JsonResult recherche(string Libelle, DateTime DatePeremtion)
+        //[HttpPost("recherche", Name = "recherche")]
+        [HttpGet()]
+        public JsonResult Get([FromQuery(Name = "recherche")] string Libelle)
         {
-
-            var produits = _context.produits.Where(p => p.Libelle == Libelle && p.DatePeremtion == DatePeremtion);
-            if (produits == null) { 
+            var produits = _context.produits.Where(p => p.Libelle == Libelle );
+            if (produits == null)
+            {
                 return new JsonResult("Aucun produit trouvé");
             }
             return new JsonResult(produits.ToList());
         }
+
+        
     }
 }
