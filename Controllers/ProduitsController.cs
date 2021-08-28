@@ -75,7 +75,7 @@ namespace ExamenGestionProduit.Controllers
         // POST api/<ProduitsController>recherche
         //[HttpPost("recherche", Name = "recherche")]
         [HttpGet()]
-        public JsonResult Get([FromQuery(Name = "recherche")] string Libelle)
+        public JsonResult Get([FromQuery(Name = "recherch")] string Libelle)
         {
             var produits = _context.produits.Where(p => p.Libelle == Libelle );
             if (produits == null)
