@@ -28,7 +28,7 @@ namespace ExamenGestionProduit
         {
             services.AddDbContext<ExamenContext>(options =>
             options.UseSqlServer(
-                Configuration.GetConnectionString("DefaultDatabase")));
+                Configuration.GetConnectionString("MyDatabase")));
             services.AddControllers();
             services.AddCors(c =>
             {

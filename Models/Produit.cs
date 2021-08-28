@@ -14,7 +14,7 @@ namespace ExamenGestionProduit.Models
         [Display(Name = "Libelle"), MaxLength(80), Required(ErrorMessage = "*")]
         public string Libelle { get; set; }
         [Display(Name = "Description "), MaxLength(200), Required(ErrorMessage = "*")]
-        public int Description { get; set; }
+        public String Description { get; set; }
         [Display(Name = "Prix Unitaire "), Required(ErrorMessage = "*")]
         public Double PU { get; set; }
         [Display(Name = "Quantité en stock"),  Required(ErrorMessage = "*")]
