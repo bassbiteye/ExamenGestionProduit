@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 using ExamenGestionProduit.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
 using Microsoft.Extensions.Hosting;
+using ExamenGestionProduit.Helpers;
+using ExamenGestionProduit.Services;
 
 namespace ExamenGestionProduit
 {
@@ -30,6 +31,11 @@ namespace ExamenGestionProduit
             options.UseSqlServer(
                 Configuration.GetConnectionString("MyDatabase")));
             services.AddControllers();
+            // configure strongly typed settings object
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
+            // configure DI for application services
+            services.AddScoped<IUserService, UserService>();
             services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
@@ -58,6 +64,15 @@ namespace ExamenGestionProduit
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            // global cors policy
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            // custom jwt auth middleware
+            app.UseMiddleware<JwtMiddleware>();
 
             app.UseAuthorization();
 

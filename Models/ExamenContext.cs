@@ -13,5 +13,6 @@ namespace ExamenGestionProduit.Models
         { }
 
         public DbSet<Produit> produits { get; set; }
+        public DbSet<User> users { get; set; }
     }
 }
