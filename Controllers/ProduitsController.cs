@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ExamenGestionProduit.Models;
 using Microsoft.AspNetCore.Mvc;
+using ExamenGestionProduit.Helpers;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,6 +12,7 @@ namespace ExamenGestionProduit.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+   // [Authorize]
     public class ProduitsController : ControllerBase
     {
         private readonly ExamenContext _context;
@@ -76,10 +78,8 @@ namespace ExamenGestionProduit.Controllers
         [HttpPost("recherche", Name = "recherche")]
         public JsonResult recherche(string Libelle, DateTime DatePeremtion)
         {
-            // var Employee = db.employes.ToList().Find(x => x.EmployeeID.Equals(ID));
-          //  var user = _context.users.Where(x => x.Username == model.Username && x.Password == model.Password).FirstOrDefault();
 
-            var produits = _context.produits.Where(p => p.Libelle == Libelle).FirstOrDefault();
+            var produits = _context.produits.Where(p => p.Libelle == Libelle && p.DatePeremtion == DatePeremtion).FirstOrDefault();
             if (produits == null) { 
                 return new JsonResult("Aucun produit trouvé");
             }

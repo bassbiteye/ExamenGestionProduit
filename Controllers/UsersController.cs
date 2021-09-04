@@ -41,7 +41,7 @@ namespace ExamenGestionProduit.Controllers
 
             return new JsonResult("Inscription réussie");
         }
-     //   [Authorize]
+        [Authorize]
         [HttpGet]
         public JsonResult GetAll()
         {

@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "DefaultDatabase",
+      "suggestion": "true",
+      "ignored": "true"
+    }
+  }
+}

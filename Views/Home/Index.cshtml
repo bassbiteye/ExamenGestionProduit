@@ -1,8 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<bold-report-viewer id="viewer" report-path="sales-order-detail.rdl" report-service-url="/api/ReportViewer"></bold-report-viewer>
-
 
 <div class="text-center">
 
@@ -10,3 +8,10 @@
     <p>Ce projet fait la gestion des produits avec aps .net core et angular</p>
 
 </div>
+<div style="height: 500px;width: 100%;">
+  <bold-report-viewer id="viewer" report-path="reportproduit.rdl" report-service-url="/api/ReportViewer"></bold-report-viewer>
+
+@*   <bold-report-designer id="designer" service-url="/api/ReportingAPI"></bold-report-designer>
+*@
+</div>
+

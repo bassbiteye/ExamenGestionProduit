@@ -1,0 +1,45 @@
+﻿@{ Layout = null; }
+@{
+    @model IEnumerable<Produit>
+
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+
+    </head>
+
+    <body>
+        <h2>Liste Produit</h2>
+
+
+
+
+        <br />
+        <table cellpadding="3" cellspacing="3">
+            <tr border="1" bgcolor="#777777" color="#ffffff">
+                <td>Id</td>
+                <td>Libelle</td>
+                <td>Description</td>
+                <td>PU</td>
+                <td>Quantite</td>
+            </tr>
+            @foreach (Produit produit in Model)
+            {
+                <tr border="1">
+                    <td>@produit.Id</td>
+                    <td>@produit.Libelle</td>
+                    <td>@produit.Description</td>
+                    <td>@produit.PU</td>
+                    <td>@produit.Quantitee</td>
+                </tr>
+            }
+        </table>
+
+
+
+    </body>
+
+
+</html>
+}

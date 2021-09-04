@@ -12,6 +12,8 @@ using Newtonsoft.Json.Serialization;
 using Microsoft.Extensions.Hosting;
 using ExamenGestionProduit.Helpers;
 using ExamenGestionProduit.Services;
+using Wkhtmltopdf.NetCore;
+using Microsoft.Extensions.Logging;
 
 namespace ExamenGestionProduit
 {
@@ -45,6 +47,7 @@ namespace ExamenGestionProduit
                 .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver())
                 ;
             services.AddControllersWithViews();
+            services.AddWkhtmltopdf("wkhtmltopdf");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,7 +73,9 @@ namespace ExamenGestionProduit
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
-
+            //Register Bold license
+            Bold.Licensing.BoldLicenseProvider.RegisterLicense("CRftZiVOmjBQ5Rl567TQgCEd9EyNsrT+5l77ou0XUBY=");
+           
             // custom jwt auth middleware
             app.UseMiddleware<JwtMiddleware>();
 
